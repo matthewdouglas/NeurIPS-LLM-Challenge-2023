@@ -14,7 +14,7 @@ Further information on the finetuning data and procedure is coming soon.
     cd inference
     docker build -t neurips_submission .
     ```
-s
+
 3. Run
     ```bash
     docker run --gpus all -p 8080:80 neurips_submission
