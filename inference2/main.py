@@ -24,7 +24,7 @@ app = FastAPI()
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-model_id = "mdouglas/Mistral-7B-sft-v1"
+model_id = "mdouglas/Mistral-7B-sft-v0"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
@@ -34,13 +34,6 @@ model = AutoModelForCausalLM.from_pretrained(
     torch_dtype=torch.bfloat16,
     use_flash_attention_2=True,
 )
-
-# Load a second adapter for multiple-choice question tasks
-model.load_adapter("mdouglas/Mistral-7B-sft-v0", adapter_name="mcq")
-
-def prompt_format(text: str) -> str:
-    template = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction\n{instruction}\n### Response\n"
-    return template.format(instruction=text)
 
 @app.post("/tokenize")
 async def tokenize(input: TokenizeRequest) -> TokenizeResponse:
@@ -53,13 +46,6 @@ async def tokenize(input: TokenizeRequest) -> TokenizeResponse:
 async def process_request(input: ProcessRequest) -> ProcessResponse:
     if input.seed is not None:
         torch.manual_seed(input.seed)
-
-    if input.max_new_tokens > 1:
-        model.set_adapter("default")
-        input.prompt = prompt_format(input.prompt)
-    else:
-        # Likely a few-shot multiple-choice question
-        model.set_adapter("mcq")
 
     encoded = tokenizer([input.prompt], return_tensors="pt").to(model.device)
     prompt_length = encoded["input_ids"][0].size(0)    # type: ignore

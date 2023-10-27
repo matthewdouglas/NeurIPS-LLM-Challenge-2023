@@ -2,7 +2,11 @@
 This is my submission to the NVIDIA RTX 4090 track of the [NeurIPS 2023 Large Language Model Efficiency Challenge: 1 LLM + 1 GPU + 1 Day](https://llm-efficiency-challenge.github.io/).
 
 # Submission Details
-The main content for my submission including the `Dockerfile` is located in the `inference` directory.
+There are three variants to be submitted. Each has a `Dockerfile` located in its directory.
+
+* `inference`
+* `inference2`
+* `inference3`
 
 Further information on the finetuning data and procedure is coming soon.
 
