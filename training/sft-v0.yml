@@ -6,13 +6,6 @@ is_mistral_derived_model: true
 
 output_dir: ./out/Mistral-7B-sft-v0
 
-# logging
-wandb_project: neurips2023
-wandb_entity:
-wandb_watch: false # log faster
-wandb_run_id:
-wandb_log_model: end
-
 load_in_8bit: false
 load_in_4bit: true
 strict: false

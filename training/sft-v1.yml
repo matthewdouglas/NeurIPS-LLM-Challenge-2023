@@ -58,12 +58,6 @@ sequence_len: 2048
 sample_packing: true
 pad_to_sequence_len: true
 
-wandb_project: neurips2023
-wandb_entity:
-wandb_watch:
-wandb_run_id:
-wandb_log_model: "checkpoint"
-
 gradient_accumulation_steps: 4
 micro_batch_size: 8
 num_epochs: 1
