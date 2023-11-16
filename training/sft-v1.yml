@@ -25,7 +25,8 @@ lora_target_modules:
   - o_proj
 
 datasets:
-  - path: ./instruct-data
+  - path: ./instruct-data/train.jsonl
+    ds_type: json
     type:
       system_prompt: ""
       field_system: ""
