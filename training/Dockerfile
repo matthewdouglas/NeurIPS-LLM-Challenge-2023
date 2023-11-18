@@ -21,4 +21,4 @@ RUN python3 ./prepare.py
 
 RUN huggingface-cli download mistralai/Mistral-7B-v0.1
 
-CMD accelerate launch -m axolotl.cli.train sft-v1.yml && accelerate launch -m axolotl.cli.train sft-v0.yml
+CMD accelerate launch -m axolotl.cli.train sft-v1.yml

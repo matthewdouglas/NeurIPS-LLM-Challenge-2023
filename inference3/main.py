@@ -24,7 +24,7 @@ app = FastAPI()
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
-model_id = "mdouglas/Mistral-7B-sft-v1"
+model_id = "drisspg/mathew_train_v1"
 
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
